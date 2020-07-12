@@ -1,34 +1,35 @@
-form {
+.newTodo form {
   width: 90%;
   max-width: 40rem;
   margin: 2rem auto;
 }
 
-.form-control {
+.newTodo .form-control {
   margin-bottom: 1rem;
 }
 
-label, input {
+.newTodo label,
+.newTodo input {
   display: block;
   width: 100%;
 }
 
-label {
+.newTodo label {
   font-weight: bold;
 }
 
-input {
+.newTodo input {
   font: inherit;
   border: 1px solid #ccc;
   padding: 0.25rem;
 }
 
-input:focus {
+.newTodo input:focus {
   outline: none;
   border-color: #50005a;
 }
 
-button {
+.newTodo button {
   background: #50005a;
   border: 1px solid #50005a;
   color: white;
@@ -36,12 +37,12 @@ button {
   cursor: pointer;
 }
 
-button:focus {
+.newTodo button:focus {
   outline: none;
 }
 
-button:hover,
-button:active {
+.newTodo button:hover,
+.newTodo button:active {
   background: #6a0a77;
   border-color: #6a0a77;
 }

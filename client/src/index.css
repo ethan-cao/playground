@@ -1,7 +1,31 @@
+*,
+*::before,
+*::after {
+	padding: 0px;
+	margin: 0px;
+	box-sizing: inherit; /* box-sizing is not inherit propert, make it to inherit from html box-sizing */
+}
+
 html {
-  font-family: sans-serif;
+	box-sizing: border-box;  
 }
 
 body {
-  margin: 0;
+	font-size: 2rem;
+}
+
+nav a.active{
+	border-bottom: 5px solid #333;
+	transition: all ease 0.5s;
+}
+
+.home-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+.about-container {
+    display: flex;
+    justify-content: center;
 }
