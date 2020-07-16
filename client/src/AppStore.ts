@@ -1,5 +1,6 @@
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
+import { TodoReducer } from "./Todo/state/TodoReducer";
 
-// export const store = createStore();
-// export const store = createStore(rootReducer);
-export const store = {};
+export const store = createStore(combineReducers({
+    todos: TodoReducer
+}));

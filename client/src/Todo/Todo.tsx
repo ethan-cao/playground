@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TodoList } from "./TodoList";
-import { Todo } from './model/todo';
+import { Todo } from './model/Todo';
 import { NewTodo } from './NewTodo';
 
 const Todos: React.FunctionComponent = () => {
