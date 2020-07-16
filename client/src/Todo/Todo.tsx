@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import TodoList from "./TodoList";
-import NewTodo from './NewTodo';
-import { Todo } from '../model/todo';
+import React, { useState } from 'react';
+import { TodoList } from "./TodoList";
+import { Todo } from './model/todo';
+import { NewTodo } from './NewTodo';
 
 const Todos: React.FunctionComponent = () => {
 	const [todos, setTodos] = useState<Todo[]>([]);
