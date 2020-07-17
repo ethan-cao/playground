@@ -4,15 +4,14 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Navbar from "./Navbar/Navbar";
 import Home from "./Home/Home";
-import Todos from "./Todo/Todo";
 import About from "./About/About";
 import Stock from "./Stock/Stock";
+import { Todos } from "./Todo/Todo";
 import { store } from "./AppStore";
 
-
-const App = () => {
+export const App = () => {
 	return (
-		// <Provider store={store}>
+		<Provider store={store}>
 			<BrowserRouter>
 				<div className="App" >
 					<Navbar />
@@ -27,8 +26,6 @@ const App = () => {
 					</Switch>
 				</div>
 			</BrowserRouter>
-		// </Provider>
+		</Provider>
 	);
 };
-
-export default App;
