@@ -1,6 +1,6 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
-import ColorFulText from "./ColorfulText";
+import ColorFulText from "../UIElement/ColorfulText";
 
 const About: React.SFC<RouteComponentProps> = (props: RouteComponentProps) => {
 	// component wrapped by Route, Route adds info to the component's props

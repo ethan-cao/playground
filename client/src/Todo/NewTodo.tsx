@@ -1,12 +1,12 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 
-import "./NewTodo.css";
+import "./style/NewTodo.css";
 
 interface NewTodoProps {
     onAddTodo: (todoText: string) => void;
-};
+}
 
-const NewTodo: React.FC<NewTodoProps> = (props) => {
+export const NewTodo = (props: NewTodoProps) => {
     // textInputRef.current refers to the corresponding DOM node, whenever that node changes
     const textInputRef = useRef<HTMLInputElement>(null);
 
@@ -28,5 +28,3 @@ const NewTodo: React.FC<NewTodoProps> = (props) => {
         </form>
     );
 };
-
-export default NewTodo;

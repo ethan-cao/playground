@@ -1,15 +1,19 @@
-import React, {useState} from 'react';
-import TodoList from "./TodoList";
-import NewTodo from './NewTodo';
-import { Todo } from '../model/todo';
+import React, { useState } from 'react';
+import { TodoList } from "./TodoList";
+import { Todo } from './model/Todo';
+import { NewTodo } from './NewTodo';
 
-const Todos: React.FunctionComponent = () => {
+export const Todos: React.FunctionComponent = () => {
 	const [todos, setTodos] = useState<Todo[]>([]);
-	
+
 	const todoAddHandler = (text: string) => {
-		setTodos( (previousTodos) => [
+		setTodos((previousTodos: Todo[]) => [
 			...previousTodos,
-			{id: Math.random().toString(), text: text}
+			{
+				id: Math.random()+"",
+				text,
+				isDone: false,
+			}
 		]);
 	};
 
@@ -23,6 +27,5 @@ const Todos: React.FunctionComponent = () => {
 			<TodoList items={todos} onDeleteTodo={todoDeleteHandler} />
 		</div>
 	);
-}
 
-export default Todos;
+}
