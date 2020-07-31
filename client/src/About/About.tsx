@@ -20,6 +20,6 @@ const About: React.SFC<RouteComponentProps> = (props: RouteComponentProps) => {
 
 export default ColorFulText(About);
 
-// alternatively for wrapping the component in <Route>
+// alternatively to wrap the component in <Route>
 //  we can also apply high order component withRouter()
 // export default withRoute(About);
