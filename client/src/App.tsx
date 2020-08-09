@@ -11,7 +11,8 @@ import { store } from "./AppStore";
 
 export const App = () => {
 	return (
-		<Provider store={store}>  // Provider: context API 
+		// Provider: context API 
+		<Provider store={store}>  
 			<BrowserRouter>
 				<div className="App" >
 					<Navbar />
