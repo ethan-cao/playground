@@ -6,8 +6,8 @@ import Navbar from "./Navbar/Navbar";
 import Home from "./Home/Home";
 import About from "./About/About";
 import Stock from "./Stock/Stock";
-import { Todos } from "./Todo/Todo";
 import { store } from "./AppStore";
+import TodosContainer from "./Todos/TodosContainer";
 
 export const App = () => {
 	return (
@@ -19,7 +19,7 @@ export const App = () => {
 					{/* each time, only one of the route can be matched, the 1st one */}
 					<Switch>
 						<Route path={["/", "/home"]} exact component={Home} />
-						<Route path="/todo" exact component={Todos} />
+						<Route path="/todo" exact component={TodosContainer} />
 						{/* component wrapped by Route, Route adds info to the component's props */}
 						<Route path="/about" exact component={About} />
 						{/* route param, :param_name */}
