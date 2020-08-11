@@ -1,9 +1,9 @@
 import { Todos } from "./Todos";
 import { connect } from "react-redux";
-import { State } from "../AppStore";
+import { RootState } from "../AppStore";
 import { selectVisibleItems } from "./state/TodoSelector";
 
-const mapStateToProps = (state: State) => {
+const mapStateToProps = (state: RootState) => {
     return {
         items: selectVisibleItems(state),
     };

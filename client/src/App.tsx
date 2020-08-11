@@ -6,13 +6,15 @@ import Navbar from "./Navbar/Navbar";
 import Home from "./Home/Home";
 import About from "./About/About";
 import Stock from "./Stock/Stock";
-import { store } from "./AppStore";
 import TodosContainer from "./Todos/TodosContainer";
+import { store, history } from "./AppStore";
+import { ConnectedRouter } from "connected-react-router";
 
 export const App = () => {
 	return (
 		// Provider: context API 
 		<Provider store={store}>  
+		 <ConnectedRouter history={history}> { /* place ConnectedRouter under Provider */ }
 			<BrowserRouter>
 				<div className="App" >
 					<Navbar />
@@ -27,6 +29,7 @@ export const App = () => {
 					</Switch>
 				</div>
 			</BrowserRouter>
+		 </ConnectedRouter>
 		</Provider>
 	);
 };
