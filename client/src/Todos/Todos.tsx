@@ -1,10 +1,10 @@
 import React from "react";
-import { TodoList } from "./TodoList";
+import { ItemList } from "./ItemList";
 import { NewTodo } from "./NewTodo";
 
 export interface Item {
     id: string,
-    text: string
+    label: string
     isDone: false;
 }
 
@@ -13,9 +13,9 @@ interface TodosProps {
 }
 
 interface TodosActions {
-	add: () => null,
-	remove: () => null, 
-	toggle: () => null, 
+	add: (label: string) => void,
+	remove: () => void, 
+	toggle: () => void, 
 }
 
 export const Todos = (props: TodosProps & TodosActions) => {
@@ -40,7 +40,7 @@ export const Todos = (props: TodosProps & TodosActions) => {
 	return (
 		<div className="Todo">
 			<NewTodo onAddTodo={add}></NewTodo>
-			<TodoList items={items} onDeleteTodo={remove} />
+			<ItemList items={items} remove={remove} />
 		</div>
 	);
 };

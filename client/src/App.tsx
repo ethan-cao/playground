@@ -1,6 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
+import { ConnectedRouter } from "connected-react-router";
 
 import Navbar from "./Navbar/Navbar";
 import Home from "./Home/Home";
@@ -8,15 +9,13 @@ import About from "./About/About";
 import Stock from "./Stock/Stock";
 import TodosContainer from "./Todos/TodosContainer";
 import { store, history } from "./AppStore";
-import { ConnectedRouter } from "connected-react-router";
 
 export const App = () => {
 	return (
-		// Provider: context API 
-		<Provider store={store}>  
-		 <ConnectedRouter history={history}> { /* place ConnectedRouter under Provider */ }
-			<BrowserRouter>
-				<div className="App" >
+		// Provider: context API
+		<Provider store={store}>
+			<ConnectedRouter history={history}> {/* place ConnectedRouter under Provider */}
+				<div className="App">
 					<Navbar />
 					{/* each time, only one of the route can be matched, the 1st one */}
 					<Switch>
@@ -28,8 +27,7 @@ export const App = () => {
 						<Route path="/stock_price_:ticker" component={Stock} />
 					</Switch>
 				</div>
-			</BrowserRouter>
-		 </ConnectedRouter>
+			</ConnectedRouter>
 		</Provider>
 	);
 };
