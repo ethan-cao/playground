@@ -8,7 +8,7 @@ export interface Item {
     isDone: false;
 }
 
-interface TodosProps {
+export interface TodosProps {
 	items: Item[]
 }
 
