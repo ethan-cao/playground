@@ -6,7 +6,7 @@ interface NewTodoProps {
     onAddTodo: (todoText: string) => void;
 }
 
-export const NewTodo = (props: NewTodoProps) => {
+export const NewItem = (props: NewTodoProps) => {
     // textInputRef.current refers to the corresponding DOM node, whenever that node changes
     const textInputRef = useRef<HTMLInputElement>(null);
 

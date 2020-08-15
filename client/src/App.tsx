@@ -7,7 +7,7 @@ import Navbar from "./Navbar/Navbar";
 import Home from "./Home/Home";
 import About from "./About/About";
 import Stock from "./Stock/Stock";
-import TodosContainer from "./Todos/TodosContainer";
+import { TodosContainer } from "./Todos/TodosContainer";
 import { store, history } from "./AppStore";
 
 export const App = () => {

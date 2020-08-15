@@ -1,4 +1,4 @@
-.itemList ul {
+.itemList {
   list-style: none;
   width: 90%;
   max-width: 40rem;
@@ -6,7 +6,9 @@
   padding: 0;
 }
 
-.itemList li {
+.itemList .itemList__item,
+.itemList .itemList__item--done,
+ {
   margin: 1rem 0;
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
@@ -14,4 +16,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.itemList .itemList__item--done .itemList--item--label {
+  text-decoration: line-through;
 }

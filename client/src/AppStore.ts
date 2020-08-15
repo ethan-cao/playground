@@ -1,23 +1,21 @@
 import { createStore, combineReducers, compose, applyMiddleware } from "redux";
-import { TodoReducer } from "./Todos/state/TodoReducer";
-import { Item } from "./Todos/Todos";
-import { VisibilityFilter } from "./Todos/state/TodoActions";
+import { TodosReducer } from "./Todos/state/TodosReducer";
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { History } from "history";
 import { createBrowserHistory } from 'history';
+import { TodosState } from "./Todos/state/TodosModel";
+import { AboutState } from "./About/state/AboutModel";
 
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export type RootState = TodosState;
+export type RootState = 
+    TodosState &
+    AboutState;
 
-export interface TodosState {
-    items: Item[],
-    visibilityFilter: VisibilityFilter;
-}
 
 const createRootReducer = (history: History<RootState>) => combineReducers({
     router: connectRouter(history),
-    todos: TodoReducer
+    todos: TodosReducer
 });
 
 export const history = createBrowserHistory<RootState>();

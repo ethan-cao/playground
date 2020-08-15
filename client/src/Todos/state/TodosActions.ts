@@ -11,29 +11,27 @@ export enum VisibilityFilter {
     SHOW_ACTIVE = "SHOW_ACTIVE"
 }
 
-let itemId = 0;
-
 export interface TodoAction {
     type: string;
     id: string;
-    title?: string;
+    label: string;
     filter?: VisibilityFilter
 }
 
-export const add = (label: string) => {
+export const add = (label: string): TodoAction => {
     return {
         type: ADD,
-        title: label,
-        id: ++itemId
+        label: label,
+        id: Date.now() + "",
     }
 };
 
-export const remove = (id: number) => ({
+export const remove = (id: string) => ({
     type: REMOVE,
     id
 });
 
-export const toggle = (id: number) => ({
+export const toggle = (id: string) => ({
     type: TOGGLE,
     id
 });

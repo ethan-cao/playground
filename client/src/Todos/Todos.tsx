@@ -1,46 +1,26 @@
 import React from "react";
-import { ItemList } from "./ItemList";
-import { NewTodo } from "./NewTodo";
 
-export interface Item {
-    id: string,
-    label: string
-    isDone: false;
-}
+import { ItemList } from "./ItemList";
+import { NewItem } from "./NewItem";
+import { Item } from "./state/TodosModel";
 
 export interface TodosProps {
-	items: Item[]
+	items: Item[],
 }
 
-interface TodosActions {
+export interface TodosActions {
 	add: (label: string) => void,
-	remove: () => void, 
-	toggle: () => void, 
+	remove: (id: string) => void, 
+	toggle: (id: string) => void, 
 }
 
 export const Todos = (props: TodosProps & TodosActions) => {
-
 	const {items, add, remove, toggle} = props;
 
-	// const todoAddHandler = (text: string) => {
-	// 	setTodos((previousTodos: Item[]) => [
-	// 		...previousTodos,
-	// 		{
-	// 			id: Math.random() + "",
-	// 			text,
-	// 			isDone: false,
-	// 		},
-	// 	]);
-	// };
-
-	// const todoDeleteHandler = (todoId: string) => {
-	// 	setTodos((previousTodos) => previousTodos.filter((todo) => todo.id !== todoId));
-	// };
-
 	return (
-		<div className="Todo">
-			<NewTodo onAddTodo={add}></NewTodo>
-			<ItemList items={items} remove={remove} />
+		<div className="Todos">
+			<NewItem onAddTodo={add}></NewItem>
+			<ItemList items={items} remove={remove} toggle={toggle} />
 		</div>
 	);
 };

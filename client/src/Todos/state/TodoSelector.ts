@@ -1,10 +1,11 @@
 import { createSelector } from "reselect";
-import { RootState } from "../../AppStore";
-import { VisibilityFilter } from "./TodoActions";
 
-const selectItems = (state: RootState) => state.todos.items;
+import { VisibilityFilter } from "./TodosActions";
+import { TodosState } from "./TodosModel";
 
-const selectVisibilityFilter = (state: RootState) => state.todos.visibilityFilter;
+const selectItems = (state: TodosState) => state.todos.items;
+
+const selectVisibilityFilter = (state: TodosState) => state.todos.visibilityFilter;
 
 export const selectVisibleItems = createSelector(
     selectItems, 

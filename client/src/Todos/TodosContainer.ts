@@ -1,22 +1,27 @@
-import { Todos, TodosProps } from "./Todos";
-import { connect } from "react-redux";
-import { RootState } from "../AppStore";
-import { selectVisibleItems } from "./state/TodoSelector";
-import { add } from "./state/TodoActions";
 import { Dispatch } from "redux";
+import { connect } from "react-redux";
 
-const mapStateToProps = (state: RootState) => {
+import { Todos, TodosProps, TodosActions } from "./Todos";
+import { selectVisibleItems } from "./state/TodoSelector";
+import { add, toggle, remove } from "./state/TodosActions";
+import { TodosState } from "./state/TodosModel";
+
+export interface TodosContainerProps {
+}
+
+// state is the entire app state, but we only want the TodosState slice
+const mapStateToProps = (state: TodosState, ownProps: TodosContainerProps): TodosProps => {
 	return {
 		items: selectVisibleItems(state),
 	};
 };
 
-const mapDispatchToProps = (dispatch: Dispatch, ownProps: TodosProps) => {
+const mapDispatchToProps = (dispatch: Dispatch, ownProps: TodosContainerProps): TodosActions => {
 	return {
 		add: (label: string) => dispatch(add(label)),
-		toggle: () => null,
-		remove: () => null,
+		toggle: (id: string) => dispatch(toggle(id)),
+		remove: (id: string) => dispatch(remove(id)),
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Todos);
+export const TodosContainer = connect(mapStateToProps, mapDispatchToProps)(Todos);
