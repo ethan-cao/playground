@@ -3,8 +3,6 @@ import { RouteComponentProps } from "react-router-dom";
 import ColorFulText from "../UIElement/ColorfulText";
 
 const About: React.SFC<RouteComponentProps> = (props: RouteComponentProps) => {
-	// component wrapped by Route, Route adds info to the component's props
-	console.log(props);
 
 	// programatically redict user to a different URL after 2s
 	// setTimeout(() => {

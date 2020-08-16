@@ -15,6 +15,9 @@ export const TodosReducer = (state: TodosModel = defaultTodos, action: TodoActio
             return { ...state, items: [...state.items.filter((todo: Item) => todo.id !== action.id)] };
         case actions.TOGGLE:
             return { ...state, items: [...state.items.map((todo: Item) => todo.id === action.id ? { ...todo, isDone: !todo.isDone } : todo)] };
+        case actions.TEST_RESELECT:
+            // return { ...state};  // result selector not called
+            return {...state, items: [...state.items]}; // result selector called, since items refers to a different object
         default:
             return state;
     }

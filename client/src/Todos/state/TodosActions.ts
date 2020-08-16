@@ -3,6 +3,7 @@ export const REMOVE = "remove todo";
 export const TOGGLE = "toggle todo";
 export const UNDO = "undo";
 export const REDO = "redo";
+export const TEST_RESELECT = "test_reselect";
 export const SET_FILTER = "set visibility filter";
 
 export enum VisibilityFilter {
@@ -47,4 +48,8 @@ export const undo = () => ({
 
 export const redo = () => ({
     type: REDO,
+});
+
+export const test_reselect = () => ({
+    type: TEST_RESELECT,
 });
