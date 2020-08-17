@@ -9,6 +9,7 @@ import About from "./About/About";
 import Stock from "./Stock/Stock";
 import { TodosContainer } from "./Todos/TodosContainer";
 import { store, history } from "./AppStore";
+import { SocialWebContainer } from "./SocialWeb/SocialWebContainer";
 
 export const App = () => {
 	return (
@@ -25,6 +26,7 @@ export const App = () => {
 						<Route path="/about" exact component={About} />
 						{/* route param, :param_name */}
 						<Route path="/stock_price_:ticker" component={Stock} />
+						<Route path="/socialweb" component={SocialWebContainer} />
 					</Switch>
 				</div>
 			</ConnectedRouter>

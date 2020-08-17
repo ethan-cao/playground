@@ -18,7 +18,6 @@ export const ItemList = (props: TodoListProps) => {
                     <button onClick={() => props.toggle(item.id)}>Toggle done</button>
                     <button onClick={() => props.remove(item.id)}>Delete</button>
                 </li>
-
             ))}
         </ul>
     );

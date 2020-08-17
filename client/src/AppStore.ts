@@ -1,21 +1,27 @@
 import { createStore, combineReducers, compose, applyMiddleware } from "redux";
-import { TodosReducer } from "./Todos/state/TodosReducer";
-import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { History } from "history";
+import ReduxThunk from 'redux-thunk';
 import { createBrowserHistory } from 'history';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
+
+import { TodosReducer } from "./Todos/state/TodosReducer";
 import { TodosState } from "./Todos/state/TodosModel";
 import { AboutState } from "./About/state/AboutModel";
+import { SocialWebState } from "./SocialWeb/state/SocialWebModel";
+import { SocialWebReducer } from "./SocialWeb/state/SocialWebReducer";
 
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export type RootState = 
     TodosState &
-    AboutState;
+    AboutState & 
+    SocialWebState;
 
 
 const createRootReducer = (history: History<RootState>) => combineReducers({
     router: connectRouter(history),
-    todos: TodosReducer
+    todos: TodosReducer,
+    socialWeb: SocialWebReducer,
 });
 
 export const history = createBrowserHistory<RootState>();
@@ -28,6 +34,7 @@ export const store = createStore(
     composeEnhancers(
         applyMiddleware(
             routerMiddleware(history),
+            ReduxThunk,
         )
     ),
 );
