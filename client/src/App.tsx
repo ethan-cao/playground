@@ -6,9 +6,9 @@ import { ConnectedRouter } from "connected-react-router";
 import Navbar from "./Navbar/Navbar";
 import Home from "./Home/Home";
 import About from "./About/About";
-import Stock from "./Stock/Stock";
+import { StockPanel } from "./StockPanel/StockPanel";
 import { TodosContainer } from "./Todos/TodosContainer";
-import { store, history } from "./AppStore";
+import { store, history } from "./AppState";
 import { SocialWebContainer } from "./SocialWeb/SocialWebContainer";
 
 export const App = () => {
@@ -25,8 +25,8 @@ export const App = () => {
 						{/* component wrapped by Route, Route adds info to the component's props */}
 						<Route path="/about" exact component={About} />
 						{/* route param, :param_name */}
-						<Route path="/stock_price_:ticker" component={Stock} />
 						<Route path="/socialweb" component={SocialWebContainer} />
+						<Route path="/stockPanel:ticker" component={StockPanel} />
 					</Switch>
 				</div>
 			</ConnectedRouter>

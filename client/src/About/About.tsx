@@ -4,7 +4,7 @@ import ColorFulText from "../UIElement/ColorfulText";
 
 const About: React.SFC<RouteComponentProps> = (props: RouteComponentProps) => {
 
-	// programatically redict user to a different URL after 2s
+	// programmatically redirect user to a different URL after 2s
 	// setTimeout(() => {
 	// 	props.history.push("/home");
 	// }, 2000);
@@ -18,6 +18,6 @@ const About: React.SFC<RouteComponentProps> = (props: RouteComponentProps) => {
 
 export default ColorFulText(About);
 
-// alternatively to wrap the component in <Route>
-//  we can also apply high order component withRouter()
+// alternatively to wrap the component in <Route>: <Route path="/about" exact component={About} />
+// we can also apply high order component withRouter()
 // export default withRoute(About);

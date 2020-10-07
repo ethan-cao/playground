@@ -2,7 +2,7 @@ import axios from "axios";
 import { Dispatch } from "redux";
 
 import { User } from "./SocialWebModel";
-import { RootState } from "../../AppStore";
+import { RootState } from "../../AppState";
 
 export interface SocialWebAction {
 	type: string;
@@ -38,7 +38,7 @@ const fetchUsersFailure = (error: string) => {
 };
 
 // Action creator, that returns function
-// since using redux-thunk, action creator can return thunk function with dispath, getState() as param
+// since using redux-thunk, action creator can return thunk function with dispatch(), getState() as param
 export const fetchUsers = () => {
 	return async (dispatch: Dispatch, getState: () => RootState) => {
         // console.log("@", getState())

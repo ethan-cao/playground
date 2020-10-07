@@ -11,6 +11,7 @@ const Navbar = () => {
                     <li><Link to="/todo">Todo</Link></li>
                     {/* NavLink add active class when the link is clicked*/}
                     <li><NavLink to="/socialweb">SocialWeb</NavLink></li>
+                    <li><NavLink to="/stockPanel">StockPanel</NavLink></li>
                     <li><NavLink to="/about">About</NavLink></li>
                 </ul>
             </div>

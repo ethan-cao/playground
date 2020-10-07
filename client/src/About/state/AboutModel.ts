@@ -1,5 +1,5 @@
 export interface AboutState {
     about: {
-        auther: string,
+        author: string,
     }
 }

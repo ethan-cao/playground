@@ -1,21 +1,26 @@
 import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import { History } from "history";
-import ReduxThunk from 'redux-thunk';
+import reduxThunk from 'redux-thunk';
 import { createBrowserHistory } from 'history';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
+import { combineEpics, createEpicMiddleware } from "redux-observable";
 
 import { TodosReducer } from "./Todos/state/TodosReducer";
 import { TodosState } from "./Todos/state/TodosModel";
 import { AboutState } from "./About/state/AboutModel";
 import { SocialWebState } from "./SocialWeb/state/SocialWebModel";
 import { SocialWebReducer } from "./SocialWeb/state/SocialWebReducer";
+import { StockPanelState } from "./StockPanel/state/StockPanelModel";
 
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export type RootState = 
     TodosState &
     AboutState & 
-    SocialWebState;
+    SocialWebState & 
+    StockPanelState;
+
+const preloadedState = {};
 
 
 const createRootReducer = (history: History<RootState>) => combineReducers({
@@ -24,9 +29,14 @@ const createRootReducer = (history: History<RootState>) => combineReducers({
     socialWeb: SocialWebReducer,
 });
 
+export const rootEpic = combineEpics(
+);
+
+const epicMiddleware = createEpicMiddleware();
+
+
 export const history = createBrowserHistory<RootState>();
 
-const preloadedState = {};
 
 export const store = createStore(
     createRootReducer(history),
@@ -34,7 +44,10 @@ export const store = createStore(
     composeEnhancers(
         applyMiddleware(
             routerMiddleware(history),
-            ReduxThunk,
+            reduxThunk,
+            epicMiddleware
         )
     ),
 );
+
+epicMiddleware.run(rootEpic);

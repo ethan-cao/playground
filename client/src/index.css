@@ -3,7 +3,7 @@
 *::after {
 	padding: 0px;
 	margin: 0px;
-	box-sizing: inherit; /* box-sizing is not inherit propert, make it to inherit from html box-sizing */
+	box-sizing: inherit; /* box-sizing is not inherit property, make it to inherit from html box-sizing */
 }
 
 html {
