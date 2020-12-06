@@ -10,7 +10,7 @@ export interface TodosContainerProps {
 }
 
 // mapStateToProps() subscribes component to Redux store change, it is invoked when store is changed
-// state: the entire app state, but we only want the TodosState slice
+// state: the entire app state, but we are only interested in the TodosState slice
 // ownProps: props passed to container
 // it returns an object, which will be merged into the component’s props.
 const mapStateToProps = (state: TodosState, ownProps: TodosContainerProps): TodosProps => {

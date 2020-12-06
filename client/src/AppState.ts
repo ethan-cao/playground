@@ -23,6 +23,7 @@ export type RootState =
 const preloadedState = {};
 
 
+// keys (router, todos, socialWeb) in the object passed to combineReducers will define the names of the keys in the resulting state object
 const createRootReducer = (history: History<RootState>) => combineReducers({
     router: connectRouter(history),
     todos: TodosReducer,

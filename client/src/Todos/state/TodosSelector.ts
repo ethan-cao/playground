@@ -15,7 +15,7 @@ const selectVisibilityFilter = (state: TodosState) => {
 	return state.todos.visibilityFilter;
 };
 
-// result function
+// result function, which is memorized with cache size of 1
 // params are the results from selector()
 const result = (items: Item[], filter: VisibilityFilter) => {
 	console.log(items.length);
@@ -31,7 +31,7 @@ const result = (items: Item[], filter: VisibilityFilter) => {
 };
 
 // createSelector() returns a composed selector() that takes the entire application state as an argument and returns the result of result(). 
-// if all selector() returns are the same, createSelector() returns the result that it cached from the previous time.
+// if all selector() returns are the same (===), createSelector() returns the result that it cached from the previous time.
 // if any of selector() return something different than the last time it ran. result() will be called
 export const selectVisibleItems = createSelector(
 	selectItems, 
