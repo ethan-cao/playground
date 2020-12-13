@@ -1,4 +1,5 @@
 import React from "react";
+
 import { User } from "./state/SocialWebModel";
 
 export interface SocialWebProps {
@@ -13,6 +14,7 @@ export interface SocialWebActions {
 
 export const SocialWeb = (props: SocialWebProps & SocialWebActions) => {
 	const { isLoading, users, load } = props;
+
 	return (
 		<div className="socialWeb">
 			<button onClick={load}>Load users</button>

@@ -1,6 +1,7 @@
- TS code is complied to js, then run by Node.js   
- TS can use ESModule   
+# Playground project
 
+ TS code is complied to js, then run by Node.js
+ TS can use ESModule
 
 TODO:
     make client work with server
