@@ -1,28 +1,28 @@
 import { SocialWebModel } from "./SocialWebModel";
-import { SocialWebAction, FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS, FETCH_USERS_FAILURE} from "./SocialWebActions";
+import { SocialWebAction, FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS, FETCH_USERS_FAILURE } from "./SocialWebActions";
 
-export const defaultSocialWeb: SocialWebModel = { users: [], posts: [], isLoading: false};
+export const defaultSocialWeb: SocialWebModel = { users: [], posts: [], isLoading: false };
 
-export const SocialWebReducer = (state: SocialWebModel = defaultSocialWeb, action: SocialWebAction ) => {
+export const SocialWebReducer = (state: SocialWebModel = defaultSocialWeb, action: SocialWebAction): SocialWebModel => {
 	switch (action.type) {
 		case FETCH_USERS_REQUEST:
 			return {
 				...state,
-				loading: true,
+				isLoading: true,
 			};
 		case FETCH_USERS_SUCCESS:
 			return {
-                ...state,
-                loading: false,
+				...state,
+				isLoading: false,
 				users: [...action.payload],
 			};
 		case FETCH_USERS_FAILURE:
 			return {
-                ...state,
-                loading: false,
+				...state,
+				isLoading: false,
 				// error: action.payload,
 			};
-        default:
-            return state;
-    }
-}
+		default:
+			return state;
+	}
+};

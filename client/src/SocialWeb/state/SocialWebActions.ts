@@ -41,18 +41,21 @@ const fetchUsersFailure = (error: string) => {
 // since using redux-thunk, action creator can return thunk function with dispatch(), getState() as param
 export const fetchUsers = () => {
 	return async (dispatch: Dispatch, getState: () => RootState) => {
-        // console.log("@", getState())
+		// console.log("@", getState())
+
 		dispatch(fetchUsersRequest());
-		axios
-			.get("https://jsonplaceholder.typicode.com/users")
-			.then((response) => {
-				// response.data is the users
-				const users = response.data.map((user: User) => ({id: user.id, name: user.name}));
+
+		try {
+			// use setTimeout to make loading slow so we can see loading skeleton
+			setTimeout(async () => {
+				const response = await axios.get("https://jsonplaceholder.typicode.com/users")
+				const users = response.data.map((user: User) => ({ id: user.id, name: user.name }));
 				dispatch(fetchUsersSuccess(users));
-			})
-			.catch((error) => {
-				// error.message is the error message
-				dispatch(fetchUsersFailure(error.message));
-			});
+			}, 1000000)
+
+		} catch (error) {
+			dispatch(fetchUsersFailure(error.message));
+		}
+
 	};
 };

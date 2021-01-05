@@ -25,7 +25,7 @@ export const App = () => {
 						{/* component wrapped by Route, Route adds info to the component's props */}
 						<Route path="/about" exact component={About} />
 						{/* route param, :param_name */}
-						<Route path="/socialweb" component={SocialWebContainer} />
+						<Route path="/socialWeb" component={SocialWebContainer} />
 						<Route path="/stockPanel:ticker" component={StockPanel} />
 					</Switch>
 				</div>

@@ -19,8 +19,8 @@ const mapStateToProps = (state: TodosState, ownProps: TodosContainerProps): Todo
 	};
 };
 
-// mapDispatchToProps() gives component.props access to action creator and dipatch aciton 
-// it could be function mapDispatchToProps(dispatch, ownProps), returns an object containing action creator with dipatch bound
+// mapDispatchToProps() gives component.props access to action creator and dispatch action 
+// it could be function mapDispatchToProps(dispatch, ownProps), returns an object containing action creator with dispatch bound
 // it could be object, where each field is an action creator, and connect() will automatically call bindActionCreators for actions
 const mapDispatchToProps = (dispatch: Dispatch, ownProps: TodosContainerProps): TodosActions => {
 	return {

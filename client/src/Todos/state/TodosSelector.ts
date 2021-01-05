@@ -1,23 +1,27 @@
 import { createSelector } from "reselect";
+import { TodosContainerProps } from "../TodosContainer";
 
 import { VisibilityFilter } from "./TodosActions";
 import { TodosState, Item } from "./TodosModel";
 
-// selector function
-// param is actually the entrie state, returns items:Item[]
+
+// all input selector should share the same signature, check createSelector type definition
+
+// non-memoized selector function, input selector
+// param is the entire state, returns items:Item[]
+// const selectItems = (state: TodosState, props: TodosContainerProps, args1: any, args2: any) => {
 const selectItems = (state: TodosState) => {
 	return state.todos.items
 };
 
-// selector function
-// param is actually the entrie state, returns visibilityFilter:VisibilityFilter
-const selectVisibilityFilter = (state: TodosState) => { 
+// non-memoized selector function, input selector
+// param is actually the entire state, returns visibilityFilter:VisibilityFilter
+const selectVisibilityFilter = (state: TodosState) => {
 	return state.todos.visibilityFilter;
 };
 
-// result function, which is memorized with cache size of 1
-// params are the results from selector()
-const result = (items: Item[], filter: VisibilityFilter) => {
+// params are the results from non-memoized selectors
+const transformer = (items: Item[], filter: VisibilityFilter) => {
 	console.log(items.length);
 	switch (filter) {
 		case VisibilityFilter.SHOW_ACTIVE:
@@ -30,12 +34,15 @@ const result = (items: Item[], filter: VisibilityFilter) => {
 	}
 };
 
-// createSelector() returns a composed selector() that takes the entire application state as an argument and returns the result of result(). 
-// if all selector() returns are the same (===), createSelector() returns the result that it cached from the previous time.
-// if any of selector() return something different than the last time it ran. result() will be called
+// createSelector() returns a memoized selector, with cache size of 1
+// the returned memoized selector takes the same params as input selector
+// the returned memoized selector returns the result of transformer
+// if all input selector returns are the same (===), transformer skips running and returns the result that it cached (the only cache)
+// if any selector returns something different than the last time it ran. transformer runs again
+
 export const selectVisibleItems = createSelector(
 	selectItems, 
 	selectVisibilityFilter, 
-	result
+	transformer
 );
-// composed selector VisibilityFilter is just another select(), can be used compose another selector
+// composed selector VisibilityFilter is just another select(), can be used as input selector to compose another selector
