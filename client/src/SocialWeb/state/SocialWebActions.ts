@@ -51,7 +51,7 @@ export const fetchUsers = () => {
 				const response = await axios.get("https://jsonplaceholder.typicode.com/users")
 				const users = response.data.map((user: User) => ({ id: user.id, name: user.name }));
 				dispatch(fetchUsersSuccess(users));
-			}, 1000000)
+			}, 2000)
 
 		} catch (error) {
 			dispatch(fetchUsersFailure(error.message));

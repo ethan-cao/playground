@@ -17,20 +17,25 @@ export interface SocialWebActions {
 export const SocialWeb = (props: SocialWebProps & SocialWebActions) => {
 	const { isLoading, users, load } = props;
 
-	return (
-		<div className="social-web">
-			<button onClick={load}>Load users</button>
-
-
-			{isLoading && <Skeleton variation={SkeletonVariation.Rectangle} height={60} hasPulse={true} />}
-			{!isLoading && <div>
+	const renderSocialWeb = () => {
+		return (
+			<div>
 				<span>Users: {users.length}</span>
 				<ul>
 					{users.map((user: User) => (
 						<li key={user.id}>{user.name}</li>
 					))}
 				</ul>
-			</div>}
+			</div>
+		);
+	}
+
+	return (
+		<div className="social-web">
+			<button onClick={load}>Load users</button>
+			<Skeleton isLoading={isLoading} variation={SkeletonVariation.Rectangle} height={60} hasPulse={true} >
+				{renderSocialWeb()}
+			</Skeleton>
 		</div>
 	);
 };

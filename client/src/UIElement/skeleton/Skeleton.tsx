@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React from "react";
+import React, { FunctionComponent, PropsWithChildren } from "react";
 
 import "./skeleton.css";
 
@@ -8,13 +8,14 @@ export enum SkeletonVariation {
 }
 
 interface SkeletonProps {
+    isLoading: boolean;
     variation: SkeletonVariation;
     height: number;
     width?: number;
     hasPulse?: boolean;
 }
 
-const Skeleton = (props: SkeletonProps) => {
+const Skeleton: FunctionComponent<SkeletonProps> = (props: PropsWithChildren<SkeletonProps>) => {
     const classes = classNames(
         "skeleton",
         { "skeleton--pulse": props.hasPulse },
@@ -23,7 +24,11 @@ const Skeleton = (props: SkeletonProps) => {
 
     const style: React.CSSProperties = { width: props.width, height: props.height };
 
-    return <div className={classes} style={style} />;
+    const renderLoadingSkeleton = () => <div className={classes} style={style} />;
+
+    const renderLoadedComponent = () => <>{props.children}</>;  // !!! use <></> to wrap the optional props.children
+
+    return props.isLoading ? renderLoadingSkeleton() : renderLoadedComponent();
 }
 
 export default Skeleton;
