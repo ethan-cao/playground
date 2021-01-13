@@ -9,16 +9,15 @@ export enum SkeletonVariation {
 
 interface SkeletonProps {
     isLoading: boolean;
-    variation: SkeletonVariation;
-    height: number;
+    variation?: SkeletonVariation;
+    height?: number;
     width?: number;
-    hasPulse?: boolean;
 }
 
 const Skeleton: FunctionComponent<SkeletonProps> = (props: PropsWithChildren<SkeletonProps>) => {
     const classes = classNames(
         "skeleton",
-        { "skeleton--pulse": props.hasPulse },
+        "skeleton--pulse",
         { "skeleton--circle": props.variation === SkeletonVariation.Circle }
     );
 

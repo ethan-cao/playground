@@ -32,4 +32,6 @@ const mapDispatchToProps = (dispatch: Dispatch, ownProps: TodosContainerProps): 
 };
 
 // connect(mapStateToProps, mapDispatchToProps, mergeProps, options) connects a React component to a Redux store
-export const TodosContainer = connect(mapStateToProps, mapDispatchToProps)(Todos);
+const TodosContainer = connect(mapStateToProps, mapDispatchToProps)(Todos);
+
+export default TodosContainer;
