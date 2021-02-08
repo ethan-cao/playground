@@ -16,4 +16,4 @@ export const UserCard = (props: UserCardProps) => {
             <div className="user-card__name">{props.name}</div>
         </div>
     );
-}
+};

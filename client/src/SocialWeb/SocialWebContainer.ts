@@ -1,20 +1,20 @@
 import { connect } from "react-redux";
 
-import { SocialWeb } from "./SocialWeb";
+import { SocialWeb, SocialWebActions, SocialWebProps } from "./SocialWeb";
 import { SocialWebState } from "./state/SocialWebModel";
 import { selectIsLoading, selectUsers } from "./state/SocialWebSelector";
 import { fetchUsers } from "./state/SocialWebActions";
 
-const mapStateToProps = (state: SocialWebState) => {
+const mapStateToProps = (state: SocialWebState): SocialWebProps => {
     return {
         isLoading: selectIsLoading(state),
         users: selectUsers(state),
     }
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: any): SocialWebActions => {
     return {
-        load: () => { dispatch(fetchUsers()) },
+        loadUsers: () => { dispatch(fetchUsers()) },
     };
 }
 
