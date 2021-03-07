@@ -13,6 +13,19 @@ export interface tooltipProps {
     position?: TooltipPosition;
 }
 
+// alternatively, IntersectionObserver
+const isInViewport = (element: HTMLElement) => {
+    const rect = element.getBoundingClientRect();
+
+    // assume the element is smaller than viewport
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
 export const Tooltip = (props: tooltipProps) => {
     const position = props.position ?? TooltipPosition.BOTTOM;
     const tooltipRef = useRef<HTMLDivElement>(null);
@@ -25,6 +38,8 @@ export const Tooltip = (props: tooltipProps) => {
         const location = computeLocation();
         tooltipRef.current.style.left = location.x + "px";
         tooltipRef.current.style.top = location.y + "px";
+
+        // if not in viewport, move to the opposite site
     });
 
     const computeLocation = (): Coordinate => {
