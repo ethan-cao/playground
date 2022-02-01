@@ -1,9 +1,9 @@
-import { SocialWebModel } from "./SocialWebModel";
+import { SocialWebState } from "./SocialWebModel";
 import { SocialWebAction, FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS, FETCH_USERS_FAILURE } from "./SocialWebActions";
 
-export const defaultSocialWeb: SocialWebModel = { users: [], posts: [], isLoading: false };
+export const defaultSocialWeb: SocialWebState = { users: [], posts: [], isLoading: false };
 
-export const SocialWebReducer = (state: SocialWebModel = defaultSocialWeb, action: SocialWebAction): SocialWebModel => {
+export const SocialWebReducer = (state: SocialWebState = defaultSocialWeb, action: SocialWebAction): SocialWebState => {
 	switch (action.type) {
 		case FETCH_USERS_REQUEST:
 			return {

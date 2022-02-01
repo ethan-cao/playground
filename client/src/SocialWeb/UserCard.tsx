@@ -8,7 +8,9 @@ interface UserCardProps {
     name: string;
 }
 
-export const UserCard = (props: UserCardProps) => {
+export const UserCard = React.memo((props: UserCardProps) => {
+    console.log('UserCard : ', props)
+
     const tooltipRef = useTooltip<HTMLDivElement>(props.name, TooltipPosition.RIGHT);
 
     return (
@@ -16,4 +18,4 @@ export const UserCard = (props: UserCardProps) => {
             <div className="user-card__name">{props.name}</div>
         </div>
     );
-};
+});

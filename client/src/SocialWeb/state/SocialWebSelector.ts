@@ -1,5 +1,5 @@
-import { SocialWebState, User } from "./SocialWebModel";
+import { SocialWebStoreSlice, User } from "./SocialWebModel";
 
-export const selectIsLoading = (state: SocialWebState): boolean => state.socialWeb.isLoading;
+export const selectIsLoading = (state: SocialWebStoreSlice): boolean => state.socialWeb.isLoading;
 
-export const selectUsers = (state: SocialWebState): User[] => state.socialWeb.users;
+export const selectUsers = (state: SocialWebStoreSlice): User[] => state.socialWeb.users;

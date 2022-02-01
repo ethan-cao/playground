@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
 
 import { SocialWeb, SocialWebActions, SocialWebProps } from "./SocialWeb";
-import { SocialWebState } from "./state/SocialWebModel";
+import { SocialWebStoreSlice } from "./state/SocialWebModel";
 import { selectIsLoading, selectUsers } from "./state/SocialWebSelector";
 import { fetchUsers } from "./state/SocialWebActions";
 
-const mapStateToProps = (state: SocialWebState): SocialWebProps => {
+const mapStateToProps = (state: SocialWebStoreSlice): SocialWebProps => {
     return {
         isLoading: selectIsLoading(state),
         users: selectUsers(state),

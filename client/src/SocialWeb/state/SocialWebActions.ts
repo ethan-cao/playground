@@ -6,8 +6,8 @@ import { RootState } from "../../AppState";
 
 export interface SocialWebAction {
 	type: string;
-    payload: User[],
-    error?: string,
+	payload: User[],
+	error?: string,
 }
 
 // Action type
@@ -31,9 +31,9 @@ const fetchUsersSuccess = (users: User[]) => {
 
 const fetchUsersFailure = (error: string) => {
 	return {
-        type: FETCH_USERS_FAILURE,
-        payload: [],
-        error,
+		type: FETCH_USERS_FAILURE,
+		payload: [],
+		error,
 	};
 };
 

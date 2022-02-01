@@ -1,5 +1,4 @@
 import { createSelector } from "reselect";
-import { TodosContainerProps } from "../TodosContainer";
 
 import { VisibilityFilter } from "./TodosActions";
 import { TodosState, Item } from "./TodosModel";
@@ -9,7 +8,6 @@ import { TodosState, Item } from "./TodosModel";
 
 // non-memoized selector function, input selector
 // param is the entire state, returns items:Item[]
-// const selectItems = (state: TodosState, props: TodosContainerProps, args1: any, args2: any) => {
 const selectItems = (state: TodosState) => {
 	return state.todos.items
 };
@@ -34,11 +32,10 @@ const transformer = (items: Item[], filter: VisibilityFilter) => {
 	}
 };
 
-// createSelector() returns a memoized selector, with cache size of 1
-// the returned memoized selector takes the same params as input selector
-// the returned memoized selector returns the result of transformer
-// if all input selector returns are the same (===), transformer skips running and returns the result that it cached (the only cache)
-// if any selector returns something different than the last time it ran. transformer runs again
+// createSelector(...inputSelectors, outputSelector, options?) returns memoized version of outputSelector, default cache size of 1
+// all inputSelectors are called with same params, meaning all input selectors should be "signature-compatible"
+// if all inputSelectors returns the same result as last time, outputSelector skips running and returns the cached result 
+// if any selector returns something different than the last time it ran. outputSelector runs again
 
 export const selectVisibleItems = createSelector(
 	selectItems, 
@@ -46,3 +43,6 @@ export const selectVisibleItems = createSelector(
 	transformer
 );
 // composed selector VisibilityFilter is just another select(), can be used as input selector to compose another selector
+
+
+// createSelector() creates a selector instance, cache is per instance

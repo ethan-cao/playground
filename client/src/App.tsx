@@ -5,11 +5,11 @@ import { ConnectedRouter } from "connected-react-router";
 
 import Navbar from "./Navbar/Navbar";
 import Home from "./Home/Home";
-import About from "./About/About";
 import { StockPanel } from "./StockPanel/StockPanel";
 import { store, history } from "./AppState";
 import { SocialWebContainer } from "./SocialWeb/SocialWebContainer";
 import Skeleton from "./UIElement/skeleton/Skeleton";
+import About from "./About/About";
 
 // lazy loading supports only default export
 const Todos = React.lazy(() => import("./Todos/TodosContainer"));  

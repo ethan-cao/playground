@@ -1,8 +1,8 @@
-export interface SocialWebState {
-    socialWeb: SocialWebModel
+export interface SocialWebStoreSlice {
+    socialWeb: SocialWebState
 }
 
-export interface SocialWebModel {
+export interface SocialWebState {
     users: User[],
     posts: Post[],
     isLoading: boolean,

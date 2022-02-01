@@ -7,17 +7,18 @@ import { combineEpics, createEpicMiddleware } from "redux-observable";
 
 import { TodosReducer } from "./Todos/state/TodosReducer";
 import { TodosState } from "./Todos/state/TodosModel";
-import { AboutState } from "./About/state/AboutModel";
-import { SocialWebState } from "./SocialWeb/state/SocialWebModel";
+import { AboutState, AboutStoreSlice } from "./About/AboutModel";
+import { SocialWebStoreSlice } from "./SocialWeb/state/SocialWebModel";
 import { SocialWebReducer } from "./SocialWeb/state/SocialWebReducer";
 import { StockPanelState } from "./StockPanel/state/StockPanelModel";
+import { AboutReducer } from "./About/AboutSlice";
 
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export type RootState = 
     TodosState &
-    AboutState & 
-    SocialWebState & 
+    AboutStoreSlice& 
+    SocialWebStoreSlice & 
     StockPanelState;
 
 const preloadedState = {};
@@ -28,6 +29,7 @@ const createRootReducer = (history: History<RootState>) => combineReducers({
     router: connectRouter(history),
     todos: TodosReducer,
     socialWeb: SocialWebReducer,
+    about: AboutReducer
 });
 
 export const rootEpic = combineEpics(
