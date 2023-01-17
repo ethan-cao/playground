@@ -37,8 +37,7 @@ const fetchUsersFailure = (error: string) => {
 	};
 };
 
-// Action creator, that returns function
-// since using redux-thunk, action creator can return thunk function with dispatch(), getState() as param
+// thunk action creator
 export const fetchUsers = () => {
 	return async (dispatch: Dispatch, getState: () => RootState) => {
 		// console.log("@", getState())
@@ -50,11 +49,12 @@ export const fetchUsers = () => {
 			setTimeout(async () => {
 				const response = await axios.get("https://jsonplaceholder.typicode.com/users")
 				const users = response.data.map((user: User) => ({ id: user.id, name: user.name }));
+
 				dispatch(fetchUsersSuccess(users));
 			}, 1000)
 
 		} catch (error) {
-			dispatch(fetchUsersFailure(error.message));
+			dispatch(fetchUsersFailure('failed'));
 		}
 
 	};

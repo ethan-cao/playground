@@ -25,4 +25,8 @@ export const setAuthor = (author: string): AboutAction => ({
 
 
 // Selector
-export const selectAuthor = (state: AboutStoreSlice) => state.about.author
+export const selectAuthor = (state: AboutStoreSlice) => {
+	console.log("@@@ selectAuthor");
+	
+	return state.about.author
+}
